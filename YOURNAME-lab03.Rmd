@@ -1,0 +1,109 @@
+---
+title: "YOUR NAME: Lab 03 for 431"
+author: "YOUR NAME"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: yes
+    code_folding: show
+---
+
+```{r setup, include=FALSE, message = FALSE}
+knitr::opts_chunk$set(comment=NA)
+options(width = 70)
+```
+
+## Setup
+
+```{r load_packages, message = FALSE, warning = FALSE}
+
+library(palmerpenguins)
+library(tidyverse)
+
+## always need tidyverse 
+## need palmerpenguins for Questions 1-5
+```
+
+## Read in `chr_data.csv` for Questions 6-10
+
+You'll need to do this on your own. Use the ideas from Lab 02 and the instructions from Labs 02 and 03 to help you. We'll assume in what follows that you've called the resulting R object `chr_data`.
+
+```{r}
+chr_data <- read_csv("https://raw.githubusercontent.com/THOMASELOVE/431-data/main/chr_data.csv")
+```
+
+Make sure the result contains 3142 rows and 91 columns.
+
+# Question 1
+
+Begin typing your answer to Question 1 here. Use complete sentences.
+
+If you need to build some code to answer a question, create a chunk of code like the one below, which looks at bill lengths rather than our area of interest. So this plot isn't helpful to us. It's also not very attractive, and not labeled effectively.
+
+```{r q01_histogram}
+ggplot(penguins, aes(x = bill_length_mm)) +
+  geom_histogram(bins = 20)
+```
+
+# Question 2
+
+Here's where you should type in your answer to Question 2. You should include the code you use. Here's an approach that yields the mean of the bill lengths after trimming away the missing data, and also the highest 10% and the lowest 10% of the non-missing data. Of course, this particular summary is also not useful to us directly.
+
+```{r q02_trimmed_mean_bill_length}
+mean(penguins$bill_length_mm, trim = 0.1, na.rm = TRUE)
+```
+
+# Question 3
+
+Answer to Question 3 goes here.
+
+# Question 4
+
+Answer to Question 3 goes here.
+
+# Question 5
+
+Answer to Question 3 goes here.
+
+# Question 6
+
+To get started here, we need to pull a sample from the `chr_data` we imported earlier. Let's call that `lab03_counties` as an R object. We'll get started with ...
+
+```{r}
+set.seed(2012022) # following the instructions
+
+lab03_counties <- sample_n(chr_data, size = 750)
+```
+
+You'll need to develop some additional code to select only the four variables of interest and then to determine that Cuyahoga County is in the sample, and specify the mean of the `adult_obesity` variable.
+
+# Question 7
+
+Your response to Question 7, including your code to build your visualization will go here.
+
+# Question 8
+
+Now, you need to build a scatterplot. I'm looking for you to use the `ggplot2` library again, so that might start out as something like this chunk.
+
+```{r q08_scatterplot_draft}
+ggplot(lab03_counties, aes(x = food_insecurity, y = adult_obesity)) +
+  geom_point()
+```
+
+And that's a reasonable start, although it could use a title, more meaningful axis titles, and you'll need to add some sort of smooth, as suggested in the instructions. 
+
+# Question 9
+
+Your plot and response to Question 9 go here.
+
+# Question 10
+
+Replace this text with your Question 10 response here.
+
+# Session Information
+
+Here's an alternative way to obtain session information. Take a look to see what it produces.
+
+```{r}
+sessioninfo::session_info()
+```

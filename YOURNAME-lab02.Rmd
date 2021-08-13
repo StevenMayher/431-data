@@ -93,4 +93,11 @@ Replace this text with your response to Question 7.
 
 Replace this text with your response to Question 8.
 
+# Session Information
+
+Adding a `sessionInfo()` chunk at the end of your document helps with reproducibility.  Take a look to see what it produces, and include the command at the end of this Lab, please.
+
+```{r}
+sessionInfo()
+```
 
