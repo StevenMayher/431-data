@@ -24,15 +24,15 @@ library(tidyverse)
 ## need palmerpenguins for Questions 1-5
 ```
 
-## Read in `chr_data.csv` for Questions 6-10
+## Read in `lab03_counties.csv` for Questions 6-10
 
-You'll need to do this on your own. Use the ideas from Lab 02 and the instructions from Labs 02 and 03 to help you. We'll assume in what follows that you've called the resulting R object `chr_data`.
+You'll need to do this on your own. Use the ideas from Lab 02 and the instructions from Labs 02 and 03 to help you. We'll assume in what follows that you've called the resulting R object `lab03_chr`.
 
 ```{r}
-chr_data <- read_csv("https://raw.githubusercontent.com/THOMASELOVE/431-data/main/chr_data.csv")
+lab03_chr <- read_csv("https://raw.githubusercontent.com/THOMASELOVE/431-data/main/lab03_counties.csv")
 ```
 
-Make sure the result contains 3142 rows and 91 columns.
+Make sure the result contains 3142 rows and 12 columns.
 
 # Question 1
 
@@ -67,12 +67,12 @@ Answer to Question 3 goes here.
 
 # Question 6
 
-To get started here, we need to pull a sample from the `chr_data` we imported earlier. Let's call that `lab03_counties` as an R object. We'll get started with ...
+To get started here, we need to pull a sample from the `lab03_chr` data we imported earlier. Let's call that `chr_sample` as an R object. We'll get started with ...
 
 ```{r}
 set.seed(2012022) # following the instructions
 
-lab03_counties <- sample_n(chr_data, size = 750)
+chr_sample <- slice_sample(lab03_chr, n = 750)
 ```
 
 You'll need to develop some additional code to select only the four variables of interest and then to determine that Cuyahoga County is in the sample, and specify the mean of the `adult_obesity` variable.
