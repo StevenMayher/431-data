@@ -70,7 +70,7 @@ Answer to Question 3 goes here.
 To get started here, we need to pull a sample from the `lab03_chr` data we imported earlier. Let's call that `chr_sample` as an R object. We'll get started with ...
 
 ```{r}
-set.seed(2012022) # following the instructions
+set.seed(20212022) # following the instructions
 
 chr_sample <- slice_sample(lab03_chr, n = 750)
 ```
