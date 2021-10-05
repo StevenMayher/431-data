@@ -1,6 +1,6 @@
 ---
 title: "YOUR PROJECT A TITLE"
-author: "YOUR NAME HERE"
+author: "Anna Magoline & Steven Mayher"
 date: "`r Sys.Date()`"
 output:
   rmdformats::readthedown:
@@ -51,8 +51,9 @@ Note that Dr. Love is working here with 2019 data, rather than 2021, as you'll u
 The code below actually loads in the data from County Health Rankings directly, using the 2019 period. 
 
 ```{r read_in_data_here, message = FALSE}
-data_url <- "https://www.countyhealthrankings.org/sites/default/files/media/document/analytic_data2019.csv"
-chr_2019_raw <- read_csv(data_url, skip = 1, guess_max = 4000)
+data_url <- "https://www.countyhealthrankings.org/sites/default/files/media/document/analytic_data2021.csv"
+chr_2021_raw <- read_csv(data_url, skip = 1) %>%
+  filter(county_ranked == 1)
 ```
 
 Note that you'll need a different `data_url` (listed below) for the 2021 data, as specified in the project instructions.
@@ -74,9 +75,8 @@ To help you think about the chunk of code below, note that the code below does t
 5. Four of the five variables I've selected are listed as proportions, and we'd like them instead to be percentages, so I'll rescale those, as well.
 
 ```{r}
-chr_2019 <- chr_2019_raw %>%
-    filter(county_ranked == 1) %>%
-    filter(state %in% c("DC", "DE", "CT", "HI", "NH", "RI")) %>%
+chr_2021 <- chr_2021_raw %>%
+    filter(state %in% c("OH", "", "", "", "", "")) %>%
     select(fipscode, state, county, 
            v147_rawvalue, v145_rawvalue, v021_rawvalue, 
            v023_rawvalue, v139_rawvalue) %>%
@@ -104,7 +104,7 @@ It will also be helpful later to include `state` as a factor variable, rather th
 We can accomplish these two tasks with the following chunk of code.
 
 ```{r}
-chr_2019 <- chr_2019 %>%
+chr_2021 <- chr_2021 %>%
     mutate(fipscode = str_pad(fipscode, 5, pad = "0"),
            state = factor(state))
 ```
